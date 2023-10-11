@@ -9,16 +9,11 @@ const tableData = [
 ]
 
 function TransactionTable() {
-    const {setDataAmount, transaction, transactionData, handleDataUpdate, dataKey, handleKeyUpdate} = useContext(MainContext);
+    const {setDataAmount, transaction, transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth} = useContext(MainContext);
 
     useEffect(() => {
         handleDataUpdate(tableData);
     }, [])
-
-    const getTransactionMonth = (date) => {
-        let monthValue = date.split("").slice(5, 7).join("");
-        return parseInt(monthValue);
-    }
 
     const expenseTotalMonth = (data) => {
         let totalExpenseMonth = 0;

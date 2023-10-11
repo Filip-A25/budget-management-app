@@ -29,11 +29,16 @@ function MainContent() {
     const handleKeyUpdate = () => {
         setDataKey(prevDataKey => prevDataKey + 1);
     }
+
+    const getTransactionMonth = (date) => {
+        let monthValue = date.split("").slice(5, 7).join("");
+        return parseInt(monthValue);
+    }
     
     return(
         <section id="mc-content">
             <MainContext.Provider value={{categories, transaction, setTransactionData, amountValues, setDataAmount,
-            transactionData, handleDataUpdate, dataKey, handleKeyUpdate}}>
+            transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth}}>
                 {activeContent === "Dashboard" ? (
                     <Dashboard />
                 ) : activeContent === "Transactions" ? (

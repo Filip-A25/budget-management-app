@@ -158,25 +158,3 @@
 .sb-button-active {
     background: var(--red-main-theme-color);
 }
-
-
-/* ---------------------- */
-/* ---- LIST DISPLAY ---- */
-/* ---------------------- */
-
-.list-display {
-    height: 50vh;
-    width: 25vw;
-    background: var(--element-background-color);
-    border-radius: var(--standard-element-border-radius);
-    padding: 1%;
-}
-
-.ld-title-section {
-    text-align: left;
-}
-
-.ld-title-section > h3 {
-    margin: 2%;
-    color: var(--casual-text-color);
-}

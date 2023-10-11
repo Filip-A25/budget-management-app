@@ -255,3 +255,40 @@ td > input {
 .blacked-out {
     background: black;
 }
+
+
+/* ---------------------- */
+/* ---- LIST DISPLAY ---- */
+/* ---------------------- */
+
+.list-display {
+    height: 45vh;
+    width: 25vw;
+    background: var(--element-background-color);
+    border-radius: var(--standard-element-border-radius);
+    padding: 1%;
+}
+
+.ld-title-section {
+    text-align: left;
+}
+
+.ld-title-section > h3 {
+    margin: 2%;
+    color: var(--casual-text-color);
+}
+
+
+/* ---------------------------- */
+/* --------- INSIGHTS --------- */
+/* ---------------------------- */
+
+.insight-section {
+    flex-direction: column;
+}
+
+#insight-content-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

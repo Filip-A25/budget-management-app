@@ -1,4 +1,5 @@
 import TopCategories from "./TopCategories";
+import TopTransactor from "./TopTransactors";
 
 function ListDisplay(props) {
     return (
@@ -7,7 +8,11 @@ function ListDisplay(props) {
                 <h3>{props.name}</h3>
             </section>
             <section className="ld-content-section">
-                <TopCategories />
+                {props.contentIndex === 0 ? (
+                    <TopCategories />
+                ) : (
+                    <TopTransactor />
+                )}
             </section>
         </div>
     )

@@ -38,26 +38,26 @@ function TopCategories() {
         transactionData.forEach(transaction => {
             const currentIndex = transaction.categoryIndex;
             newTotalAmounts[currentIndex] += transaction.amount;
-        })
+        });
 
         setCategoryTotal(newTotalAmounts);
     }, [transactionData])
-    console.log(Object.values(categoryTotal)[1]);
+    
     return (
-        <table>
-            <tbody>
+    <table>
+        <tbody>
             {categories.map((category, index) => (
-                <tr key={category}>
-                    <td>{category}</td>
-                    {Object.keys(categoryTotal).map((key) => {
-                        if (Object.values(categoryConnection)[index] === key) {
-                            return <td>{Object.values(categoryTotal)[index]}</td>;
-                        }
-                    })}
-                </tr>
-            ))}
-            </tbody>
-        </table>
+            <tr key={category}>
+                <td>{category}</td>
+                {Object.keys(categoryTotal).map((key) => {
+                if (Object.values(categoryConnection)[index] === key) {
+                    return <td>{Object.values(categoryTotal)[index]} €</td>;
+                }
+            })}
+            </tr>
+        ))}
+        </tbody>
+    </table>
     )
 }
 
