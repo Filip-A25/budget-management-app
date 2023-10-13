@@ -8,7 +8,7 @@ function ListDisplay(props) {
                 <h3>{props.name}</h3>
             </section>
             <section className="ld-content-section">
-                {props.contentIndex === 0 ? (
+                {props.cIndex === 0 ? (
                     <TopCategories />
                 ) : (
                     <TopTransactor />

@@ -2,7 +2,7 @@ import { MainContext } from "../components/MainContent";
 import { useContext, useState, useEffect } from 'react';
 
 function TopCategories() {
-    const {transactionData, categories} = useContext(MainContext);
+    const {transactionData} = useContext(MainContext);
     const [categoryTotal, setCategoryTotal] = useState({
         foodTotal: 0,
         fuelTotal: 0,
@@ -17,9 +17,7 @@ function TopCategories() {
         otherTotal: 0
     });
 
-    console.log(categoryTotal);
-
-    const categoryConnection = {
+    const categoryMapping = {
         Food: "foodTotal",
         Fuel: "fuelTotal",
         Rent: "rentTotal",
@@ -34,30 +32,27 @@ function TopCategories() {
     }
 
     useEffect(() => {   
-        const newTotalAmounts = { ...categoryTotal };
+        const currentTotalAmounts = { ...categoryTotal };
+
         transactionData.forEach(transaction => {
-            const currentIndex = transaction.categoryIndex;
-            newTotalAmounts[currentIndex] += transaction.amount;
+            let totalName = categoryMapping[transaction.category];
+            currentTotalAmounts[totalName] += transaction.amount;
         });
 
-        setCategoryTotal(newTotalAmounts);
+        setCategoryTotal(currentTotalAmounts);
     }, [transactionData])
     
     return (
-    <table>
-        <tbody>
-            {categories.map((category, index) => (
-            <tr key={category}>
-                <td>{category}</td>
-                {Object.keys(categoryTotal).map((key) => {
-                if (Object.values(categoryConnection)[index] === key) {
-                    return <td>{Object.values(categoryTotal)[index]} €</td>;
-                }
-            })}
-            </tr>
-        ))}
-        </tbody>
-    </table>
+        <table>
+            <tbody>
+                {Object.keys(categoryMapping).map((category, index) => {
+                    return <tr key={index} className="list-display-row">
+                        <td className="casual-red-text">{category}</td>
+                        <td>{categoryTotal[Object.values(categoryMapping)[index]].toFixed(2)}</td>
+                    </tr>
+                })}
+            </tbody>
+        </table>
     )
 }
 

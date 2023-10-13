@@ -9,11 +9,11 @@ function Insights() {
             <div id="insight-content-section">
                 <ListDisplay
                     name="Top monthly expenses (by category)"
-                    contentIndex={0}
+                    cIndex={0}
                 />
                 <ListDisplay
                     name="Top monthly transactors"
-                    contentIndex={1}
+                    cIndex={1}
                 />
             </div>
         </div>

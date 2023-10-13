@@ -278,6 +278,12 @@ td > input {
     color: var(--casual-text-color);
 }
 
+.list-display-row {
+    display: flex;
+    justify-content: space-between;
+    width: 20vw;
+}
+
 
 /* ---------------------------- */
 /* --------- INSIGHTS --------- */

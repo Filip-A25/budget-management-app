@@ -50,6 +50,10 @@
     font-weight: bold;
 }
 
+.casual-red-text {
+    color: var(--red-main-theme-color);
+}
+
 .flex-centered {
     display: flex;
     justify-content: center;
