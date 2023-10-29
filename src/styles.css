@@ -60,6 +60,7 @@
     align-items: center;
 }
 
+
 /* ----------------- */
 /* ---- SIDEBAR ---- */
 /* ----------------- */
@@ -161,4 +162,93 @@
 
 .sb-button-active {
     background: var(--red-main-theme-color);
+}
+
+
+/* ----------------- */
+/* ---- POP-UPS ---- */
+/* ----------------- */
+
+.popup-hide {
+    display: none !important;
+}
+
+.add-pop-up {
+    height: 85%;
+    width: 40%;
+    background: var(--element-background-lite-color);
+    text-align: left;
+    color: white;
+    border: 3px solid var(--element-background-color);
+    position: relative;
+}
+
+.add-pop-up-heading {
+    background: var(--element-background-color);
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.add-pop-up-heading > h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.add-pop-up-input {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.add-pop-up-input > h3 {
+    margin: 0.9em 0 0.6em 0;
+}
+
+.add-pop-up-input > input, select {
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background: var(--element-background-color);
+    height: 4vh;
+    width: 70%;
+    color: white;
+}
+
+.add-pop-up-input > select, option {
+    cursor: pointer;
+}
+
+.add-pop-up-verify {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--red-main-theme-color);
+    position: absolute;
+    bottom: 0;
+}
+
+.add-pop-up-verify-button {
+    background: transparent;
+}
+
+.exit-pop-up-button {
+    background: var(--background-light-color);
+}
+
+.add-pop-up-verify-button, .exit-pop-up-button {
+    height: 100%;
+    width: 50%;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.blacked-out {
+    background: black;
 }

@@ -10,6 +10,7 @@ function TransactionTableData(props) {
             <td>{props.date}</td>
             <td>{props.flow == 0 ? "Payment from" : "Payment to"}</td>
             <td className="main-red-text">{props.name}</td>
+            <td>{props.descText}</td>
             <td>{props.category}</td>
             <td>{props.amount.toFixed(2)} €</td>
             <td><button className="tr-delete-button" onClick={props.onClickDelete}>Delete</button></td>

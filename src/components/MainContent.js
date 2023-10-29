@@ -9,6 +9,7 @@ const MainContext = createContext();
 function MainContent() {
     const {activeContent} = useContext(CategoryContext);
 
+    const [categories, updateCategories] = useState(["Food", "Fuel", "Rent", "Gift", "Work", "School", "Entertainment", "Hobby", "Health", "House", "Other"]);
     const [transaction, setTransactionData] = useState(0);
     const [amountValues, setDataAmount] = useState({
         incomeValue: 0,
@@ -36,7 +37,7 @@ function MainContent() {
     
     return(
         <section id="mc-content">
-            <MainContext.Provider value={{transaction, setTransactionData, amountValues, setDataAmount,
+            <MainContext.Provider value={{categories, transaction, setTransactionData, amountValues, setDataAmount,
             transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth}}>
                 {activeContent === "Dashboard" ? (
                     <Dashboard />

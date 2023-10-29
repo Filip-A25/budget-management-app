@@ -3,9 +3,9 @@ import { useContext, useEffect } from 'react';
 import { MainContext } from "../components/MainContent";
  
 const tableData = [
-    {key: 0, date: "2023-08-24", flow: 0, name: "Transaction 1", amount: 1330.44, category: "Work", categoryIndex: 4},
-    {key: 1, date: "2023-08-31", flow: 1, name: "Transaction 2", amount: 13.42, category: "Food", categoryIndex: 0},
-    {key: 2, date: "2023-09-05", flow: 1, name: "Transaction 3", amount: 150.00, category: "Gift", categoryIndex: 3}
+    {key: 0, date: "2023-08-24", flow: 0, name: "Transactor 1", descText: "First transaction", amount: 1330.44, category: "Work", categoryIndex: 4},
+    {key: 1, date: "2023-08-31", flow: 1, name: "Transactor 2", descText: "Second transaction", amount: 13.42, category: "Food", categoryIndex: 0},
+    {key: 2, date: "2023-09-05", flow: 1, name: "Transactor 3", descText: "Third transaction", amount: 150.00, category: "Gift", categoryIndex: 3}
 ]
 
 function TransactionTable() {
@@ -94,6 +94,7 @@ function TransactionTable() {
                     <td>Date</td>
                     <td>Type</td>
                     <td>Name</td>
+                    <td>Description</td>
                     <td>Category</td>
                     <td>Amount</td>
                     <td></td>
@@ -104,6 +105,7 @@ function TransactionTable() {
                         date={data.date}
                         flow={data.flow}
                         name={data.name}
+                        descText={data.descText}
                         amount={data.amount}
                         category={data.category}
                         onClickDelete={() => handleDataDeletion(data.key)}

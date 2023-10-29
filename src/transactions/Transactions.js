@@ -30,6 +30,7 @@ function Transactions() {
 
         let dateValue = document.getElementById("entry-date").value;
         let nameValue = document.getElementById("entry-name").value;
+        let descValue = document.getElementById("entry-desc").value;
         let amountValue = document.getElementById("entry-amount").value;
         let categoryValue = document.getElementById("entry-category");
 
@@ -39,6 +40,7 @@ function Transactions() {
                     date: dateValue,
                     flow: transactionFlow,
                     name: nameValue,
+                    descText: descValue,
                     amount: parseInt(amountValue),
                     category: categoryValue.name,
                     categoryIndex: categoryValue.key
@@ -67,7 +69,7 @@ function Transactions() {
             <div className="detailed-section mc-section">
                 <div className="heading-row">
                     <h1 className="casual-text-color">Transactions</h1>
-                    <button id="tsc-add-btn" onClick={() => setOpen(true)}>+</button>
+                    <button className="data-add-btn" onClick={() => setOpen(true)}>+</button>
                 </div>
                 <FlowContext.Provider value={{activeIndex, setDataAmount}}>
                     <TransactionTable />
@@ -75,9 +77,9 @@ function Transactions() {
             </div>
             </div>
             {popOpen && (
-            <div className="add-transaction-pop-up">
-                <section className="add-transaction-heading padding-side"><h1>Add transaction</h1></section>
-                <section className="add-transaction-input padding-side">
+            <form className="add-pop-up">
+                <section className="add-pop-up-heading padding-side"><h1>Add transaction</h1></section>
+                <section className="add-pop-up-input padding-side">
                     <h3>Date</h3>
                     <input type="date" id="entry-date"></input>
                     <h3>Payment type</h3>
@@ -87,6 +89,8 @@ function Transactions() {
                     </select>
                     <h3>Name</h3>
                     <input id="entry-name"></input>
+                    <h3>Description</h3>
+                    <input type="text" id="entry-desc"></input>
                     <h3>Category</h3>
                     <select id="entry-category">
                         <option value="">Select category...</option>
@@ -94,14 +98,14 @@ function Transactions() {
                             <option key={index} name={category} value={index}>{category}</option>
                         ))}
                     </select>
-                    <h3>Price (€)</h3>
+                    <h3>Price</h3>
                     <input type="number" id="entry-amount" placeholder="0.00"></input>
                 </section>
-                <section className="add-transaction-verify">
-                    <button className="standard-button" id="exit-transaction-button" type="button" onClick={() => setOpen(false)}>Back</button>
-                    <button className="standard-button" id="add-transaction-verify-button" type="button" onClick={() => handleTransactionAdd()}>Add</button>
+                <section className="add-pop-up-verify">
+                    <button className="standard-button exit-pop-up-button" type="button" onClick={() => setOpen(false)}>Back</button>
+                    <button className="standard-button add-pop-up-verify-button" type="button" onClick={() => handleTransactionAdd()}>Add</button>
                 </section>
-            </div>
+            </form>
             )}
         </>
     )
