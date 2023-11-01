@@ -28,8 +28,6 @@ function TopTransactors() {
         handleTransactors(transactionData);
     }, [transactionData])
 
-
-    console.log(transactors);
     return (
         <table>
             <tbody>

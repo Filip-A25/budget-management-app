@@ -3,7 +3,7 @@
 }
 
 #mc-content {
-    height: 100vh;
+    min-height: 100vh;
     width: calc(100vw - var(--sidebar-element-width));
     display: flex;
     flex-direction: column;
@@ -184,9 +184,6 @@ td > input {
 .list-display {
     height: 45vh;
     width: 25vw;
-    background: var(--element-background-color);
-    border-radius: var(--standard-element-border-radius);
-    padding: 1%;
     margin-right: 3%;
 }
 
@@ -229,3 +226,13 @@ td > input {
 /* -------------------------------- */
 /* --------- GOAL DISPLAY --------- */
 /* -------------------------------- */
+
+.goals-section {
+    flex-direction: column;
+}
+
+.goal-display {
+    height: 30vh;
+    width: 20vw;
+    text-align: start;
+}

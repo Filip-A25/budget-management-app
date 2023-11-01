@@ -1,8 +1,27 @@
 import ListDisplay from "./ListDisplay";
 import { useState } from 'react';
+import GoalDsiplay from "../components/GoalDisplay";
 
 function Insights() {
     const [popOpen, setOpen] = useState(false);
+    const [goalArray, setArrayValues] = useState([]);
+    const handleGoalPush = () => {
+        let timespanValue = document.getElementById("g-entry-timespan").value;
+        let typeValue = document.getElementById("g-entry-type").value;
+        let amountValue = document.getElementById("g-entry-amount").value;
+        let allowanceValue = document.getElementById("g-entry-allowance").value;
+        let notifyValue = document.getElementById("g-entry-notify");
+
+        let newArrayData = {
+            timespan: timespanValue,
+            type: typeValue,
+            amount: amountValue,
+            allowance: allowanceValue
+        }
+
+        setArrayValues([...goalArray, newArrayData]);
+        setOpen(false);
+    }
 
     return (
         <>
@@ -22,13 +41,21 @@ function Insights() {
                     />
                 </div>
             </div>
-            <div className="mc-section">
+            <div className="mc-section goals-section">
                 <div className="heading-row">
                     <h1 className="casual-text-color">Goals</h1>
                     <button className="data-add-btn" onClick={() => setOpen(true)}>+</button>
                 </div>
                 <div className="insights-sub-section">
-
+                    {goalArray.map((goal, index) => (
+                        <GoalDsiplay
+                            key={index}
+                            timespan={goal.timespan}
+                            type={goal.type}
+                            amount={goal.amount}
+                            allowance={goal.allowance}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
@@ -40,26 +67,26 @@ function Insights() {
                         <h3>Timespan</h3>
                         <select name="timespan" id="g-entry-timespan">
                             <option value="">Select timespan...</option>
-                            <option value="weekly">Weekly</option>
-                            <option value="monthly">Monthly</option>
-                            <option value="yearly">Yearly</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Yearly">Yearly</option>
                         </select>
                         <h3>Type</h3>
                         <select name="type" id="g-entry-type">
                             <option value="">Select type...</option>
-                            <option value="saving">Saving</option>
-                            <option value="other">Other</option>
+                            <option value="Saving">Saving</option>
+                            <option value="Other">Other</option>
                         </select>
                         <h3>Amount</h3>
-                        <input tyoe="number" name="amount" id="g-entry-amount" placeholder="0.00"></input>
+                        <input type="number" name="amount" id="g-entry-amount" placeholder="0.00"></input>
                         <h3> Allowance</h3>
                         <input type="number" name="allowance" id="g-entry-allowance" placeholder="0.00"></input>
-                        <h3 id="notify-header">Notify</h3>
+                        <span className="add-pop-up-span"><h3 id="notify-header">Notify</h3><span className="flex-centered">?</span></span>
                         <span><input type="checkbox" id="g-entry-notify"></input> Yes</span>
                     </section>
                     <section className="add-pop-up-verify">
-                    <button className="standard-button exit-pop-up-button"type="button" onClick={() => setOpen(false)}>Back</button>
-                    <button className="standard-button add-pop-up-verify-button" type="button">Add</button>
+                    <button className="standard-button exit-pop-up-button" type="button" onClick={() => setOpen(false)}>Back</button>
+                    <button className="standard-button add-pop-up-verify-button" type="button" onClick={() => handleGoalPush()}>Add</button>
                 </section>
                 </form>
             </div>
