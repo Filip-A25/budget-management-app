@@ -60,6 +60,7 @@
 
 .total-amount-text {
     font-size: 1.8rem;
+    font-weight: bold;
 }
 
 .heading-section > h2 {
@@ -215,6 +216,9 @@ td > input {
 .insights-sub-section {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 3.5%;
     margin-bottom: 3%;
 }
 
@@ -235,4 +239,20 @@ td > input {
     height: 30vh;
     width: 20vw;
     text-align: start;
+    margin-bottom: 3%;
+}
+
+.goal-numbers {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.goal-main-header {
+    margin-top: 5%;
+}
+
+.goal-sub-header {
+    margin-bottom: 0;
 }

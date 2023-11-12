@@ -1,6 +1,12 @@
 import ListDisplay from "./ListDisplay";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GoalDsiplay from "../components/GoalDisplay";
+
+let goals = [
+    { timespan: "Weekly", type: "Saving", amount: 150.00, allowance: 15.00, notify: true },
+    { timespan: "Monthly", type: "Other", amount: 1230.00, allowance: 100.00, notify: false},
+    { timespan: "Yearly", type: "Other", amount: 640.00, allowance: 83.00, notify: false}
+]
 
 function Insights() {
     const [popOpen, setOpen] = useState(false);
@@ -10,18 +16,24 @@ function Insights() {
         let typeValue = document.getElementById("g-entry-type").value;
         let amountValue = document.getElementById("g-entry-amount").value;
         let allowanceValue = document.getElementById("g-entry-allowance").value;
-        let notifyValue = document.getElementById("g-entry-notify");
+        let notifyValue = document.getElementById("g-entry-notify").checked ? true : false;
 
         let newArrayData = {
             timespan: timespanValue,
             type: typeValue,
-            amount: amountValue,
-            allowance: allowanceValue
+            amount: parseFloat(amountValue),
+            allowance: parseFloat(allowanceValue),
+            notify: notifyValue
         }
 
-        setArrayValues([...goalArray, newArrayData]);
+        goals.push(newArrayData);
+        setArrayValues(goals);
         setOpen(false);
     }
+
+    useEffect(() => {
+        setArrayValues(goals);
+    }, [goals]);
 
     return (
         <>
@@ -46,14 +58,14 @@ function Insights() {
                     <h1 className="casual-text-color">Goals</h1>
                     <button className="data-add-btn" onClick={() => setOpen(true)}>+</button>
                 </div>
-                <div className="insights-sub-section">
+                <div className="insights-sub-section flex-spaced">
                     {goalArray.map((goal, index) => (
                         <GoalDsiplay
                             key={index}
                             timespan={goal.timespan}
                             type={goal.type}
-                            amount={goal.amount}
-                            allowance={goal.allowance}
+                            amount={goal.amount.toFixed(2)}
+                            allowance={goal.allowance.toFixed(2)}
                         />
                     ))}
                 </div>

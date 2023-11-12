@@ -1,28 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { MainContext } from "../components/MainContent";
 
 function Total(props) {
     const classArray = props.isActive ? "total-container standard-button total-active" : "total-container standard-button total-inactive"
+
+    const {handleDecimal} = useContext(MainContext);
 
     const [displayTotalValue, setTotalValue] = useState(0);
     const [displayMonthlyValue, setMonthlyValue] = useState(0);
 
     useEffect(() => {
-        const handleDecimal = (value) => {
-            let displayValue = value.toString();
-            if (value >= 1000) {
-                displayValue = displayValue.split("");
-                let commaPos;
-    
-                if (value < 10000) commaPos = 1;
-                else if (value < 100000) commaPos = 2;
-                else commaPos = 3;
-    
-                displayValue.splice(commaPos, 0, ",")
-    
-                return displayValue.join("");
-            } else return displayValue;
-        }
-
         const decimalTotalValue = handleDecimal(props.value);
         const decimalMonthlyValue = handleDecimal(props.monthlyValue);
 

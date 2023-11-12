@@ -35,10 +35,26 @@ function MainContent() {
         return parseInt(monthValue);
     }
     
+    const handleDecimal = (value) => {
+        let displayValue = value.toString();
+        if (value >= 1000) {
+            displayValue = displayValue.split("");
+            let commaPos;
+
+            if (value < 10000) commaPos = 1;
+            else if (value < 100000) commaPos = 2;
+            else commaPos = 3;
+
+            displayValue.splice(commaPos, 0, ",")
+
+            return displayValue.join("");
+        } else return displayValue;
+    }
+
     return(
         <section id="mc-content">
             <MainContext.Provider value={{categories, transaction, setTransactionData, amountValues, setDataAmount,
-            transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth}}>
+            transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth, handleDecimal}}>
                 {activeContent === "Dashboard" ? (
                     <Dashboard />
                 ) : activeContent === "Transactions" ? (

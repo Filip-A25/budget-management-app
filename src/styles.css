@@ -8,8 +8,10 @@
     --casual-text-color: whitesmoke;
     --background-dark-color: rgb(22, 22, 33);
     --background-light-color: rgb(28, 28, 37);
-    --red-main-theme-color: #f61e41;
     --casual-dark-text-color: rgb(48, 48, 48);
+    --red-main-theme-color: #f61e41;
+    --green-text-color: rgb(13, 222, 13);
+    --gold-text-color: rgb(255, 217, 0);
 
     --main-background-color: rgb(26, 26, 46);
 
@@ -33,6 +35,19 @@
 
 .text-indent {
     padding-left: 5%;
+}
+
+.text-number-main {
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.green-text {
+    color: var(--green-text-color);
+}
+
+.gold-text {
+    color: var(--gold-text-color);
 }
 
 #page-content {
@@ -61,6 +76,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-spaced {
+    justify-content: space-between;
 }
 
 
