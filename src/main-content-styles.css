@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     margin-left: 10vw;
-    background: var(--main-background-color);
+    background: var(--main-lt-background-color);
     padding: 2% 0% 2% 0%;
 }
 
@@ -34,11 +34,11 @@
 /* -------------------------- */
 
 .total-active {
-    background: rgb(35, 35, 73);
+    background: rgb(235, 235, 235);
 }
 
 .total-inactive {
-    background: rgb(29, 29, 60);
+    background: rgb(209, 209, 209);
 }
 
 .overview-section {
@@ -99,7 +99,7 @@
     table-layout: fixed;
     border-spacing: 0;
 }
-td {
+#transaction-table td {
     text-align: left;
     color: white;
     padding-left: 2%;
@@ -115,21 +115,28 @@ td:nth-child(4) {
 
 .tr-table-headrow {
     height: 6vh;
-    background: var(--element-background-color);
+    background: var(--element-lt-background-color);
 }
 
 .tr-table-row {
     width: 100%;
     height: 8vh;
-    background: var(--element-background-color);
 }
 
 td > input {
     cursor: pointer;
 }
 
-.tr-table-row:nth-child(2n) {
-    background: var(--element-background-lite-color);
+.tr-table-row-color {
+    background: var(--element-lt-background-color);
+}
+
+.tr-table-row-color-lite {
+    background: var(--element-lt-background-lite-color);
+}
+
+.tr-table-row-color-lite > td {
+    color: var(--casual-lt-text-color) !important;
 }
 
 .tr-delete-button {
@@ -149,12 +156,13 @@ td > input {
 }
 
 .heading-row > h1 {
-    margin-right: 5%;
+    margin-right: 0.5vw;
+    font-size: 1.5rem;
 }
 
 .data-add-btn {
     height: 30px;
-    width: 40px;
+    width: 35px;
     font-size: 1.5rem;
     border-radius: 5px;
     border: none;
@@ -178,14 +186,18 @@ td > input {
 }
 
 
+
 /* ---------------------- */
 /* ---- LIST DISPLAY ---- */
 /* ---------------------- */
 
 .list-display {
-    height: 45vh;
+    height: 46vh;
     width: 25vw;
     margin-right: 3%;
+    padding-top: 0;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .ld-title-section {
@@ -194,7 +206,7 @@ td > input {
 
 .ld-title-section > h3 {
     margin: 2%;
-    color: var(--casual-text-color);
+    color: var(--casual-lt-text-color);
 }
 
 .list-display-row {
@@ -227,6 +239,7 @@ td > input {
 }
 
 
+
 /* -------------------------------- */
 /* --------- GOAL DISPLAY --------- */
 /* -------------------------------- */
@@ -256,3 +269,48 @@ td > input {
 .goal-sub-header {
     margin-bottom: 0;
 }
+
+
+
+/* ---------------------------------- */
+/* --------- VISUALIZE DATA --------- */
+/* ---------------------------------- */
+
+.chart-select-section {
+    height: 35vh;
+    width: 100%;
+    background: rgb(255, 255, 255, 0.5);
+    text-align: left;
+    margin-bottom: 5%;
+    padding-left: 2%;
+    border-radius: 7px;
+}
+
+.chart-select-list {
+    height: 16vh;
+    list-style: none;
+    text-align: left;
+}
+
+.chart-select-list > li {
+    margin-bottom: 2%;
+}
+
+.chart-select-li-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: var(--red-main-theme-color);
+    text-decoration: underline;
+    cursor: pointer; 
+}
+
+
+
+
+
+
+
+
+
+

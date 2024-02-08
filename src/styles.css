@@ -5,18 +5,33 @@
 :root {
     --font-text-sidebar: 'Lato';
 
-    --casual-text-color: whitesmoke;
+    --casual-text-color: rgb(245, 245, 245);
+
+    /* DARK THEME */
     --background-dark-color: rgb(22, 22, 33);
     --background-light-color: rgb(28, 28, 37);
     --casual-dark-text-color: rgb(48, 48, 48);
-    --red-main-theme-color: #f61e41;
-    --green-text-color: rgb(13, 222, 13);
-    --gold-text-color: rgb(255, 217, 0);
 
     --main-background-color: rgb(26, 26, 46);
 
     --element-background-color: rgb(32, 32, 63);
     --element-background-lite-color: rgb(45, 45, 80);
+    
+
+    /* LIGHT THEME */
+    --background-lt-dark-color: rgb(43, 43, 43); 
+
+    --main-lt-background-color: whitesmoke;
+    --element-lt-background-color: rgb(113, 113, 113);
+    --element-lt-background-lite-color: rgb(230, 230, 230);
+
+    --casual-lt-text-color: rgb(48, 48, 48);
+    
+
+    --red-main-theme-color: rgb(4, 180, 107);
+    /*--red-main-theme-color: #f61e41;*/
+    --green-text-color: rgb(13, 222, 13);
+    --gold-text-color: rgb(255, 217, 0);
 
     --sidebar-elemenet-width: 10vw;
 
@@ -56,11 +71,11 @@
 }
 
 .casual-dark-text {
-    color: var(--casual-dark-text-color);
+    color: var(--casual-lt-text-color);
 }
 
 .casual-text-color {
-    color: var(--casual-text-color);
+    color: var(--casual-lt-text-color);
 }
 
 .main-red-text {
@@ -78,8 +93,28 @@
     align-items: center;
 }
 
+.flex-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.flex-column-left {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
 .flex-spaced {
     justify-content: space-between;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 
@@ -91,7 +126,7 @@
     position: fixed;
     height: 100%;
     width: 12vw;
-    background: var(--background-dark-color);
+    background: var(--background-lt-dark-color);
     transition: all 250ms ease-in-out;
     display: flex;
     flex-direction: column;
@@ -187,17 +222,21 @@
 }
 
 .add-pop-up {
-    height: 85%;
+    height: 100%;
     width: 40%;
-    background: var(--element-background-lite-color);
+    background: var(--element-lt-background-color);
     text-align: left;
     color: white;
-    border: 3px solid var(--element-background-color);
+    border: 3px solid var(--background-lt-dark-color);
     position: relative;
 }
 
+#transaction-add-pop-up {
+    height: 90vh;
+}
+
 .add-pop-up-heading {
-    background: var(--element-background-color);
+    background: var(--background-lt-dark-color);
     height: 10%;
     display: flex;
     align-items: center;
@@ -209,7 +248,7 @@
 }
 
 .add-pop-up-input {
-    height: 80%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -226,10 +265,10 @@
     font-size: 1.1rem;
     outline: none;
     border: none;
-    background: var(--element-background-color);
+    background: whitesmoke;
     height: 4vh;
     width: 70%;
-    color: white;
+    color: var(--casual-lt-text-color);
 }
 
 .add-pop-up-input > select, option {
@@ -305,8 +344,8 @@
 /* ----------------------- */
 
 .item-display {
-    background: var(--element-background-color);
+    background: rgb(235, 235, 235);
     border-radius: var(--standard-element-border-radius);
     padding: 1%;
-    color: var(--casual-text-color);
+    color: var(--casual-lt-text-color);
 }

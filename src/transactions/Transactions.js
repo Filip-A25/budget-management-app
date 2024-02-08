@@ -77,7 +77,7 @@ function Transactions() {
             </div>
             </div>
             {popOpen && (
-            <form className="add-pop-up">
+            <form className="add-pop-up" id="transaction-add-pop-up">
                 <section className="add-pop-up-heading padding-side"><h1>Add transaction</h1></section>
                 <section className="add-pop-up-input padding-side">
                     <h3>Date</h3>

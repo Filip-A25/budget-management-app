@@ -4,8 +4,8 @@ import GoalDsiplay from "../components/GoalDisplay";
 
 let goals = [
     { timespan: "Weekly", type: "Saving", amount: 150.00, allowance: 15.00, notify: true },
-    { timespan: "Monthly", type: "Other", amount: 1230.00, allowance: 100.00, notify: false},
-    { timespan: "Yearly", type: "Other", amount: 640.00, allowance: 83.00, notify: false}
+    { timespan: "Monthly", type: "Other", amount: 1230.00, allowance: 100.00, notify: false },
+    { timespan: "Yearly", type: "Other", amount: 640.00, allowance: 83.00, notify: false }
 ]
 
 function Insights() {
@@ -17,6 +17,10 @@ function Insights() {
         let amountValue = document.getElementById("g-entry-amount").value;
         let allowanceValue = document.getElementById("g-entry-allowance").value;
         let notifyValue = document.getElementById("g-entry-notify").checked ? true : false;
+
+        if (parseFloat(amountValue) <= parseFloat(allowanceValue)) {
+            
+        }
 
         let newArrayData = {
             timespan: timespanValue,

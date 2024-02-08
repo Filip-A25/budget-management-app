@@ -5,7 +5,8 @@ import { CategoryContext } from "../App";
 const buttons = [
     { name: "Dashboard", href: "#"},
     { name: "Transactions", href: "#"},
-    { name: "Insights", href: "#"}
+    { name: "Insights", href: "#"},
+    { name: "Visualize Data", href: "#"}
 ]
 
 function Sidebar() {

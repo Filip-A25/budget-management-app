@@ -1,5 +1,7 @@
 import TopCategories from "./TopCategories";
 import TopTransactor from "./TopTransactors";
+import { useState, useEffect, useContext } from 'react';
+import { MainContext } from "../components/MainContent";
 
 function ListDisplay(props) {
     return (

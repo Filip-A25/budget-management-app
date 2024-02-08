@@ -1,20 +1,33 @@
 import TransactionTableData from './TransactionTableData';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MainContext } from "../components/MainContent";
+import { FlowContext } from "./Transactions";
  
 const tableData = [
-    {key: 0, date: "2023-08-24", flow: 0, name: "Transactor 1", descText: "First transaction", amount: 1330.44, category: "Work", categoryIndex: 4},
-    {key: 1, date: "2023-08-31", flow: 1, name: "Transactor 2", descText: "Second transaction", amount: 13.42, category: "Food", categoryIndex: 0},
-    {key: 2, date: "2023-09-05", flow: 1, name: "Transactor 3", descText: "Third transaction", amount: 150.00, category: "Gift", categoryIndex: 3}
+    {date: "2023-08-24", flow: 0, name: "Transactor 1", descText: "First transaction", amount: 1330.44, category: "Work", categoryIndex: 4},
+    {date: "2023-08-31", flow: 1, name: "Transactor 2", descText: "Second transaction", amount: 13.42, category: "Food", categoryIndex: 0},
+    {date: "2023-09-05", flow: 1, name: "Transactor 3", descText: "Third transaction", amount: 150.00, category: "Gift", categoryIndex: 3}
 ]
 
 function TransactionTable() {
     const {setDataAmount, transaction, transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth} = useContext(MainContext);
+    const {activeIndex} = useContext(FlowContext);
+
+    const [displayData, setDisplayData] = useState([]);
 
     useEffect(() => {
         handleDataUpdate(tableData);
     }, [])
 
+    useEffect(() => {
+        let newDataArray = [];
+        transactionData.forEach(data => {
+            if (data.flow === activeIndex || activeIndex === 2) newDataArray.push(data);
+        })
+        setDisplayData(newDataArray);
+    }, [transactionData, activeIndex])
+
+    // Get total value of expenses of transactions from last month.
     const expenseTotalMonth = (data) => {
         let totalExpenseMonth = 0;
         let firstTransaction = data[data.length - 1];
@@ -28,6 +41,7 @@ function TransactionTable() {
         return totalExpenseMonth;
     }
 
+    // Get total value of incomes of transactions from last month.
     const incomeTotalMonth = (data) => {
         let totalIncomeMonth = 0;
         let firstTransaction = data[data.length - 1];
@@ -41,6 +55,7 @@ function TransactionTable() {
         return totalIncomeMonth;
     }
 
+    // Set totals for income, expenses and total by month and in total.
     useEffect(() => {
         let incomeValueTotal = 0;
         let expenseValueTotal = 0;
@@ -99,9 +114,10 @@ function TransactionTable() {
                     <td>Amount</td>
                     <td></td>
                 </tr>
-                {transactionData.map((data) => 
+                {displayData.map((data, index) =>
                     <TransactionTableData 
-                        key={data.key}
+                        key={index}
+                        index={index}
                         date={data.date}
                         flow={data.flow}
                         name={data.name}

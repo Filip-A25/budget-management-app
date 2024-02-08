@@ -1,6 +1,7 @@
 import Dashboard from "../dashboard/Dashboard";
 import Transactions from "../transactions/Transactions";
 import Insights from "../insights/Insights";
+import VisualizeData from "../visualize_data/VisualizeData";
 import { CategoryContext } from "../App";
 import { useState, useContext, createContext } from 'react';
 
@@ -22,10 +23,42 @@ function MainContent() {
     const [transactionData, updateTotalArray] = useState([]);
     const [dataKey, setDataKey] = useState(2);
 
+    const [activeNum, setActiveNum] = useState(0);
+
+    const [categoryTotal, setCategoryTotal] = useState({
+        foodTotal: 0,
+        fuelTotal: 0,
+        rentTotal: 0,
+        giftTotal: 0,
+        workTotal: 0,
+        schoolTotal: 0,
+        entertainmentTotal: 0,
+        hobbyTotal: 0,
+        healthTotal: 0,
+        houseTotal: 0,
+        otherTotal: 0
+    });
+
+    const categoryMapping = {
+        Food: "foodTotal",
+        Fuel: "fuelTotal",
+        Rent: "rentTotal",
+        Gift: "giftTotal",
+        Work: "workTotal",
+        School: "schoolTotal",
+        Entertainment: "entertainmentTotal",
+        Hobby: "hobbyTotal",
+        Health: "healthTotal",
+        House: "houseTotal",
+        Other: "otherTotal"
+    }
+
+    const [transactors, setTransactors] = useState({});
+
     const handleDataUpdate = (data) => {
         updateTotalArray(data);
     }
-
+    
     const handleKeyUpdate = () => {
         setDataKey(prevDataKey => prevDataKey + 1);
     }
@@ -54,13 +87,16 @@ function MainContent() {
     return(
         <section id="mc-content">
             <MainContext.Provider value={{categories, transaction, setTransactionData, amountValues, setDataAmount,
-            transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth, handleDecimal}}>
+            transactionData, handleDataUpdate, dataKey, handleKeyUpdate, getTransactionMonth, handleDecimal, categoryTotal,
+            setCategoryTotal, categoryMapping, transactors, setTransactors, activeNum, setActiveNum}}>
                 {activeContent === "Dashboard" ? (
                     <Dashboard />
                 ) : activeContent === "Transactions" ? (
                     <Transactions />
-                ) : (
+                ) : activeContent === "Insights" ? (
                     <Insights />
+                ) : (
+                    <VisualizeData />
                 )}
             </MainContext.Provider>
         </section>

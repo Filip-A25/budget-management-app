@@ -2,8 +2,7 @@ import { MainContext } from "../components/MainContent";
 import { useState, useContext, useEffect } from 'react';
 
 function TopTransactors() {
-    const {getTransactionMonth, transactionData} = useContext(MainContext);
-    const [transactors, setTransactors] = useState({});
+    const {getTransactionMonth, transactionData, transactors, setTransactors} = useContext(MainContext);
 
     const handleTransactors = (transactions) => {
         let firstTransaction = transactions[transactions.length - 1];
@@ -33,8 +32,8 @@ function TopTransactors() {
             <tbody>
                 {Object.keys(transactors).map((transactor, index) => {
                     return <tr key={index} className="list-display-row">
-                        <td className="casual-red-text">{transactor}</td>
-                        <td>{transactors[transactor].toFixed(2)}</td>
+                        <td className="casual-red-text bold">{transactor}</td>
+                        <td className="bold">{transactors[transactor].toFixed(2)}</td>
                     </tr>;
                 })}
             </tbody>
